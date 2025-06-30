@@ -10,14 +10,14 @@ interface IClockState {
 
 export class Clock extends React.Component<IClockProps, IClockState> {
   state: Readonly<IClockState> = {
-    time: new Date().toUTCString().slice(-12, -4),
+    time: new Date().toUTCString().split(' ')[4],
   };
 
   private timerId: number = 0;
 
   componentDidMount(): void {
     this.timerId = window.setInterval(() => {
-      const currentTime = new Date().toUTCString().slice(-12, -4);
+      const currentTime = new Date().toUTCString().split(' ')[4];
 
       this.setState({ time: currentTime });
 
